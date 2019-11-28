@@ -2,12 +2,12 @@ import random
 import time
 
 cardNumber = []
-cardShape = ["Hearts", "Spades", "Diamonds", "Clubs"]
+cardShape = ["Hearts", "Spades", "Diamonds", "Clubs"] #Card Shapes
 num = random.randint
 
 for i in range(1,14):
     cardNumber.append(i)
-print("You have the cards of " + str(cardNumber))
+print("You have the cards of " + str(cardNumber)) #Card number: from 1 to 13
 print("We have four shapes: " + str(cardShape))
 
 class Card:
@@ -16,9 +16,11 @@ class Card:
         MrFord.number = number
     def Func(MrFord):
         print(MrFord.shape, MrFord.number)
+        #52 cards are created 
 
 player_1 = input("Enter a name of player_1: ")
 player_2 = input("Enter a name of player_2: ")
+#players type their names
 
 p1_point = 0
 p2_point = 0
@@ -29,6 +31,7 @@ def display(p1_point, p2_point):
 
     playAgain = 'yes'
     while playAgain == 'yes' or playAgain == 'y':
+        #It asks if the player wants to play again this game
 
         print(player_1 + "'s card is...")
         time.sleep(1)
@@ -39,7 +42,7 @@ def display(p1_point, p2_point):
         time.sleep(1)
         c2 = Card(random.choice(cardShape), random.choice(cardNumber))
         c2.Func()
-        
+        #The program gives one random card to each player
  
         
 
@@ -60,6 +63,7 @@ def display(p1_point, p2_point):
             print("player_1: " + str(p1_point) + " vs player_2: " + str(p2_point))
         print('Do you want to keep playing? (yes or no)')
         playAgain = str(input())
+        #This is a point system. The one who wins gets 1 point
 
   
 display(p1_point, p2_point)
