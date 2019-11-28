@@ -1,4 +1,6 @@
 import random
+import time
+
 cardNumber = []
 cardShape = ["Hearts", "Spades", "Diamonds", "Clubs"]
 num = random.randint
@@ -15,23 +17,50 @@ class Card:
     def Func(MrFord):
         print(MrFord.shape, MrFord.number)
 
-player_1= input("What is your name?: ")
-print("Hello, "  + player_1 + ". Your card is...")
+player_1 = input("Enter a name of player_1: ")
+player_2 = input("Enter a name of player_2: ")
 
-c1 = Card(random.choice(cardShape), random.choice(cardNumber))
-c1.Func()
+p1_point = 0
+p2_point = 0
+playAgain = 'yes'
 
-player_2= input("What is your name?: ")
-print("Hello, "  + player_2 + ". Your card is...")
-
-c2 = Card(random.choice(cardShape), random.choice(cardNumber))
-c2.Func()
-
-if c1.number > c2.number:
-    print(player_1 + " won!")
+def display(p1_point, p2_point):
     
-elif c1.number < c2.number:
-    print(player_2 + " won!")
 
-else:
-    print("Same number! It was a tie.")
+    playAgain = 'yes'
+    while playAgain == 'yes' or playAgain == 'y':
+
+        print(player_1 + "'s card is...")
+        time.sleep(1)
+        c1 = Card(random.choice(cardShape), random.choice(cardNumber))
+        c1.Func()
+    
+        print(player_2 + "'s card is...")
+        time.sleep(1)
+        c2 = Card(random.choice(cardShape), random.choice(cardNumber))
+        c2.Func()
+        
+ 
+        
+
+        if c1.number > c2.number:
+            print(player_1 + " gains 1 point!")
+            p1_point += 1
+            print("player_1: " + str(p1_point) + " vs player_2: " + str(p2_point))
+            
+    
+        elif c1.number < c2.number:
+            print(player_2 + " gains 1 point!")
+            p2_point += 1
+            print(player_1 + " : " + str(p1_point) + " and " + player_2 + " : " + str(p2_point))
+            
+
+        elif c1.number == c2.number:
+            print("Same number! It was a tie. Point for nobody")
+            print("player_1: " + str(p1_point) + " vs player_2: " + str(p2_point))
+        print('Do you want to keep playing? (yes or no)')
+        playAgain = str(input())
+
+  
+display(p1_point, p2_point)
+print('Good bye. See you later!')
